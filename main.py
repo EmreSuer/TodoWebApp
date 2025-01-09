@@ -17,6 +17,7 @@ import io
 import pandas as pd
 from werkzeug.utils import secure_filename
 
+
 # Load environment variables at the start of the application
 load_dotenv()
 
@@ -373,23 +374,27 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
+    try:
+        if request.method == 'POST':
+            email = request.form['email']
+            password = request.form['password']
 
-        user = User.query.filter_by(email=email).first()
+            user = User.query.filter_by(email=email).first()
 
-        if user and check_password_hash(user.password, password):
-            if not user.email_verified:
-                flash('Please verify your email before logging in.')
-                return redirect(url_for('login'))
+            if user and check_password_hash(user.password, password):
+                if not user.email_verified:
+                    flash('Please verify your email before logging in.')
+                    return redirect(url_for('login'))
 
-            login_user(user)
-            return redirect(url_for('index'))
-        else:
-            flash('Invalid email or password')
-
-    return render_template('login.html')
+                login_user(user)
+                return redirect(url_for('index'))
+            else:
+                flash('Invalid email or password')
+    
+        return render_template('login.html')
+    except Exception as e:
+        flash(f'An error occurred: {str(e)}')
+        return redirect(url_for('login'))
 
 
 @app.route('/logout')
@@ -968,7 +973,10 @@ def permanent_delete_all():
     return redirect(url_for('trash'))
 
 
+
+
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    app.run(debug=False)
+    app.run(debug=True)
