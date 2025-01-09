@@ -1,0 +1,91 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Environment Variables and Secrets
+.env
+*.env
+.flaskenv
+instance/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+.project
+.classpath
+.settings/
+
+# Logs
+*.log
+logs/
+log/
+
+# Local development configuration
+config.py
+local_settings.py
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+
+# Backup files
+*.bak
+*.tmp
+*~
+
+# Media and user uploaded content
+media/
+uploads/
+
+# Compiled JavaScript
+*.min.js
+*.bundle.js
+
+# Compiled CSS
+*.min.css
+
+# Dependencies
+node_modules/
+bower_components/
+
+# Production build files
+build/
+dist/
