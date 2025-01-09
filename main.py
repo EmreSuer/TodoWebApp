@@ -24,7 +24,6 @@ load_dotenv()
 app = Flask(__name__)
 
 
-print(f"Database URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
 # Database Configuration
 database_url = os.getenv('DATABASE_URL')
 if database_url and database_url.startswith('postgres://'):
@@ -34,7 +33,7 @@ if database_url and database_url.startswith('postgres://'):
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
 
-print(f"Database URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
+
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -377,9 +376,6 @@ def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-
-        # Log the email and password attempt (be cautious with logging passwords)
-        app.logger.info(f"Login attempt for email: {email}")
 
         user = User.query.filter_by(email=email).first()
 
