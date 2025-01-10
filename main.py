@@ -990,7 +990,6 @@ def permanent_delete_all():
 if __name__ == "__main__":
     with app.app_context():
         print("Creating database tables...")
-        print(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
-        db.create_all()
+        #db.create_all()
         print(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
     app.run(debug=True)
