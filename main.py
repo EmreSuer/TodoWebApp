@@ -26,9 +26,7 @@ app = Flask(__name__)
 print(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
 logging.debug(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
 
-@app.before_first_request
-def force_error():
-    raise ValueError(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
+
 
 
 
