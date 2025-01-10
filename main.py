@@ -16,13 +16,15 @@ import json
 import io
 import pandas as pd
 from werkzeug.utils import secure_filename
-
+import logging
 
 # Load environment variables at the start of the application
 load_dotenv()
 
 # App Configuration
 app = Flask(__name__)
+print(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
+logging.debug(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
 
 
 # Database Configuration
@@ -981,4 +983,5 @@ if __name__ == "__main__":
         print("Creating database tables...")
         print(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
         db.create_all()
+        print(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
     app.run(debug=True)
