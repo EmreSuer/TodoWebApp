@@ -71,7 +71,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
     email_verified = db.Column(db.Boolean, default=False)
-    verification_token = db.Column(db.String(100), unique=True)
+    verification_token = db.Column(db.String(255), unique=True)
     token_expiration = db.Column(db.DateTime)
     tasks = db.relationship('Task', backref='user', lazy=True)
     categories = db.relationship('Category', backref='user', lazy=True)
