@@ -23,11 +23,6 @@ load_dotenv()
 
 # App Configuration
 app = Flask(__name__)
-print(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
-logging.debug(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
-
-
-
 
 
 # Database Configuration
