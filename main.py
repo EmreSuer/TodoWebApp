@@ -31,14 +31,17 @@ logging.debug(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
 
 
 # Database Configuration
-database_url = os.getenv('DATABASE_URL')
-if database_url and database_url.startswith('postgres://'):
+#database_url = os.getenv('DATABASE_URL')
+#if database_url and database_url.startswith('postgres://'):
     # Render uses 'postgres://' but SQLAlchemy needs 'postgresql://'
-    database_url = database_url.replace('postgres://', 'postgresql://', 1)
-    app.config['SQLALCHEMY_DATABASE_URI'] = database_url
-else:
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
+#   database_url = database_url.replace('postgres://', 'postgresql://', 1)
+#   app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+#else:
+#   app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
 
+import os
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///tasks.db')
 
 
 
