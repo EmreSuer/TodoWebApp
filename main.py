@@ -26,6 +26,11 @@ app = Flask(__name__)
 print(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
 logging.debug(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
 
+@app.before_first_request
+def force_error():
+    raise ValueError(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
+
+
 
 # Database Configuration
 database_url = os.getenv('DATABASE_URL')
@@ -397,6 +402,11 @@ def login():
     except Exception as e:
         flash(f'An error occurred: {str(e)}')
         return redirect(url_for('login'))
+
+
+@app.route('/debug')
+def debug():
+    return f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}"
 
 
 @app.route('/logout')
