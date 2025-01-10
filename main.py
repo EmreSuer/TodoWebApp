@@ -404,9 +404,9 @@ def login():
         return redirect(url_for('login'))
 
 
-@app.route('/debug')
-def debug():
-    return f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}"
+#@app.route('/debug')
+#def debug():
+#    return f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}"
 
 
 @app.route('/logout')
@@ -992,5 +992,5 @@ if __name__ == "__main__":
     with app.app_context():
         print("Creating database tables...")
         db.create_all()
-        print(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
+        #print(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
     app.run(debug=True)

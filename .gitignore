@@ -55,6 +55,7 @@ log/
 # Local development configuration
 config.py
 local_settings.py
+export_data.py
 
 # Coverage reports
 htmlcov/
