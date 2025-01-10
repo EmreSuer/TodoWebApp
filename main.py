@@ -64,6 +64,9 @@ mail = Mail(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
+print(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
+logging.debug(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
+
 
 # Models
 class User(UserMixin, db.Model):
