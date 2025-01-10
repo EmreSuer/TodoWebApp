@@ -36,8 +36,9 @@ app = Flask(__name__)
 
 import os
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///tasks.db')
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///tasks.db')
 
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'postgresql://todo_list_db_88z8_user:JJlkuTZm2hDNwBvcQYSVNb9STtuTNg9Z@dpg-cu0hqcdumphs7384bkog-a.oregon-postgres.render.com:5432/todo_list_db_88z8')
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -990,6 +991,6 @@ def permanent_delete_all():
 if __name__ == "__main__":
     with app.app_context():
         print("Creating database tables...")
-        #db.create_all()
+        db.create_all()
         print(f"Database URI: {app.config.get('SQLALCHEMY_DATABASE_URI')}")
     app.run(debug=True)
